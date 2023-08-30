@@ -18,7 +18,7 @@ class WebViewApp extends StatefulWidget {
 
 class _WebViewAppState extends State<WebViewApp> {
   late final WebViewController controller;
-  String url = 'https://pisscounter.com/';
+  String url = 'https://www.pisscounter.com';
 
   @override
   void initState() {
@@ -38,6 +38,13 @@ class _WebViewAppState extends State<WebViewApp> {
     super.initState();
   }
 
+  void _changeUrl(String newUrl) {
+    setState(() {
+      url = newUrl;
+      controller.loadRequest(Uri.parse(url));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +53,32 @@ class _WebViewAppState extends State<WebViewApp> {
       ),
       body: WebViewWidget(
         controller: controller,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.question_mark),
+            label: 'About',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.login),
+            label: 'Login',
+          ),
+        ],
+        currentIndex: 0,
+        onTap: (index) {
+          if (index == 0) {
+            _changeUrl('https://www.pisscounter.com');
+          } else if (index == 1) {
+            _changeUrl('https://www.pisscounter.com/about');
+          } else if (index == 2) {
+            _changeUrl('https://www.pisscounter.com/logon');
+          }
+        },
       ),
     );
   }
