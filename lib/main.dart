@@ -18,7 +18,7 @@ class WebViewApp extends StatefulWidget {
 
 class _WebViewAppState extends State<WebViewApp> {
   late final WebViewController controller;
-  String url = 'https://www.pisscounter.com';
+  String url = 'https://www.pisscounter.com/app';
 
   @override
   void initState() {
@@ -49,7 +49,7 @@ class _WebViewAppState extends State<WebViewApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter WebView'),
+        backgroundColor: Colors.blue.shade800,
       ),
       body: WebViewWidget(
         controller: controller,
@@ -65,18 +65,18 @@ class _WebViewAppState extends State<WebViewApp> {
             label: 'About',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.login),
-            label: 'Login',
+            icon: Icon(Icons.map),
+            label: 'PissMap',
           ),
         ],
         currentIndex: 0,
         onTap: (index) {
           if (index == 0) {
-            _changeUrl('https://www.pisscounter.com');
+            _changeUrl('https://www.pisscounter.com/app');
           } else if (index == 1) {
-            _changeUrl('https://www.pisscounter.com/about');
+            _changeUrl('https://www.pisscounter.com/abapp');
           } else if (index == 2) {
-            _changeUrl('https://www.pisscounter.com/logon');
+            _changeUrl('https://www.pisscounter.com/mapapp');
           }
         },
       ),
